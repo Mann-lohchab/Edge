@@ -18,7 +18,7 @@
 
 **Edge** is a modular backend framework designed for systems that must **evolve without downtime**.
 
-It allows features to be **started, stopped, or replaced at runtime**—similar to Docker containers, but at the **application-logic level**.
+It allows features to be **started, stopped, or replaced at runtime** , similar to Docker containers, but at the **application-logic level**.
 
 Edge is inspired by NestJS architecture, rebuilt for Bun with:
 - No decorators
