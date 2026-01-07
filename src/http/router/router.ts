@@ -1,14 +1,33 @@
 export class Router {
-    routes: any[] = []
+    private routes: {
+        method: string
+        path: string
+        handler: Function
+    }[] = []
 
-    register(method: string, path: string, handler: any) {
-        this.routes.push({ method, path, handler })
+    get(path: string, handler: Function) {
+        this.routes.push({
+            method: "GET",
+            path,
+            handler,
+        })
     }
+
+    post(path: string, handler: Function) {
+        this.routes.push({
+            method: "POST",
+            path,
+            handler,
+        })
+    }
+    
 
     match(req: Request) {
         const url = new URL(req.url)
+
         return this.routes.find(
             r => r.method === req.method && r.path === url.pathname
         )
     }
 }
+

@@ -1,4 +1,14 @@
-import { createApplication } from "../application/bootstrap";
+/* This file is just for testing purpsoes  */
+import { createApplication } from "../application/bootstrap"
 
-const App = createApplication({}) 
+const App = createApplication()
+
+App.get("/", (ctx: any) => {
+    return ctx.text("Hello via Edge")
+})
+
+App.get("/health", (ctx: any) => {
+    return ctx.json({ status: "ok" })
+})
+
 App.listen(3000)

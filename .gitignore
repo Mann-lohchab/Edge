@@ -1,12 +1,10 @@
 # dependencies (bun install)
 node_modules
 
-
-
 #txt and md files not to push 
 Mindmap.md
 Roadmap.md 
-
+model.md
 
 # output
 out

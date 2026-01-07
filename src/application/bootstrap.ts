@@ -1,25 +1,27 @@
 import { Router } from "../http/router/router"
-import { createrServer } from "../http/server"
-
+import { createServer } from "../http/server"
 
 type ApplicationOptions = {
   rootModule?: any
 }
 
-
-
-// createApplication()
-export function createApplication(options: ApplicationOptions) {
-
+export function createApplication(options: ApplicationOptions = {}) {
   const router = new Router()
-  const server = createrServer(router)
-  const resolvedOptions = {
-    rootModule: options?.rootModule ?? null,
-  }
 
   return {
+    // 🔹 ROUTE DEFINITIONS
+    get(path: string, handler: Function) {
+      router.get(path, handler)
+    },
+
+    post(path: string, handler: Function) {
+      router.post(path, handler)
+    },
+
+    // 🔹 START SERVER
     listen(port: number) {
-      console.log("Listiening on ", port)
-    }
+      console.log("Listening on", port)
+      createServer({ port, router })
+    },
   }
 }
