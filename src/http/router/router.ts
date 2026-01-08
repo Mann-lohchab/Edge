@@ -20,7 +20,20 @@ export class Router {
             handler,
         })
     }
-    
+    put(path: string, handler: Function) {
+        this.routes.push({
+            method: "PUT",
+            path,
+            handler,
+        })
+    }
+    delete(path: string, handler: Function) {
+        this.routes.push({
+            method: "DELETE",
+            path,
+            handler,
+        })
+    }
 
     match(req: Request) {
         const url = new URL(req.url)

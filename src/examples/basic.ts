@@ -10,5 +10,8 @@ App.get("/", (ctx: any) => {
 App.get("/health", (ctx: any) => {
     return ctx.json({ status: "ok" })
 })
+App.get("/error", () => {
+  throw new Error("Test error")
+})
 
 App.listen(3000)
