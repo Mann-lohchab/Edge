@@ -10,7 +10,6 @@ export function createApplication(options: ApplicationOptions = {}) {
 
   return {
     
-    
     // 🔹 ROUTE DEFINITIONS
     get(path: string, handler: Function) {
       router.get(path, handler)
@@ -24,7 +23,6 @@ export function createApplication(options: ApplicationOptions = {}) {
     delete(path: string , handler: Function ){
       router.delete(path ,handler)
     },
-
 
     // 🔹 START SERVER
     listen(port: number) {

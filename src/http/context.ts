@@ -1,12 +1,12 @@
 export class Context {
-  constructor(public req: Request) {}
-  text(data:any){
-    return new Response(data, {
-      headers: { "content-type" : "text/plain"},
-    })
+    public params: Record<string, string> = {}
+
+    constructor(public req: Request) {}
+    text(data:string){
+    return new Response(data)
   }
 
-  json(data: any) {
+  json(data: unknown) {
     return new Response(JSON.stringify(data), {
       headers: { "content-type" : "application/json"}
     })

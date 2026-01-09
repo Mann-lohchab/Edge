@@ -3,12 +3,12 @@ import { createApplication } from "../application/bootstrap"
 
 const App = createApplication()
 
-App.get("/", (ctx: any) => {
-    return ctx.text("Hello via Edge")
+App.get("/user/:id", (ctx: any) => {
+  return ctx.text(ctx.params.id)
 })
 
 App.get("/health", (ctx: any) => {
-    return ctx.json({ status: "ok" })
+  return ctx.json({ status: "ok" })
 })
 App.get("/error", () => {
   throw new Error("Test error")

@@ -20,7 +20,9 @@ export function createServer({
                 }
 
                 const ctx = new Context(req)
-                return match.handler(ctx)
+                ctx.params = match.params
+
+                return  await match.handler(ctx)
             } catch (err: any) {
                 return handleError(err)
             }
