@@ -1,3 +1,4 @@
+import type { Middleware } from "../http/middleware"
 import { Router } from "../http/router/router"
 import { createServer } from "../http/server"
 
@@ -7,10 +8,11 @@ type ApplicationOptions = {
 
 export function createApplication(options: ApplicationOptions = {}) {
   const router = new Router()
+  const middlewares: Middleware[] = []
+
 
   return {
     
-    // 🔹 ROUTE DEFINITIONS
     get(path: string, handler: Function) {
       router.get(path, handler)
     },
@@ -22,12 +24,15 @@ export function createApplication(options: ApplicationOptions = {}) {
     },
     delete(path: string , handler: Function ){
       router.delete(path ,handler)
+    },             
+    use(mw: Middleware) {
+      middlewares.push(mw)
     },
 
     // 🔹 START SERVER
     listen(port: number) {
       console.log("Listening on", port)
-      createServer({ port, router })
+      createServer({ port, router , middlewares })
     },
   }
 }
